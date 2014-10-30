@@ -11,8 +11,13 @@ class Dashing.Clock extends Dashing.Widget
     s = today.getSeconds()
     m = @formatTime(m)
     s = @formatTime(s)
+    
+    d = today.getDate()
+    mo = today.getMonth() + 1 
+    y = today.getFullYear()
+
     @set('time', h + ":" + m + ":" + s)
-    @set('date', today.toDateString())
+    @set('date', d  + "-" + mo + "-" + y)
 
   formatTime: (i) ->
     if i < 10 then "0" + i else i
