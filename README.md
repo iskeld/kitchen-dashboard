@@ -3,7 +3,7 @@
 * [Ruby 1.9+](https://www.ruby-lang.org/en/downloads/) 
 * Bundler 
 ```
-gem install bundler
+$ gem install bundler
 ```
 ##To build
 ```
