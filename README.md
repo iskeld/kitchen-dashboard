@@ -1,7 +1,10 @@
 
 ##Requirements
-Ruby 1.9+ (with DevKit)
-
+* [Ruby 1.9+](https://www.ruby-lang.org/en/downloads/) 
+* Bundler 
+```
+gem install bundler
+```
 ##To build
 ```
 $ bundle
