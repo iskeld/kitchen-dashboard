@@ -12,7 +12,7 @@ $ dashing start
 ```
 
 ###Production Link
-[@Heroku](kitchen-dashboard.herokuapp.com)
+[@Heroku](http://kitchen-dashboard.herokuapp.com)
 
 ###Contributing
 Via pull request - see issues on the right.
