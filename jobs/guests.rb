@@ -6,6 +6,6 @@ guest_list = {
 
 SCHEDULER.every '15s' do
 	inviter = guest_list.keys.sample
-	invitees = guest_list[inviter].join(", ")
-	send_event('guests', {text: invitees, moreinfo: "Invited by " + inviter })
+	invitees =  guest_list[inviter]
+	send_event('guests', {items: invitees, moreinfo: "Invited by " + inviter })
 end
