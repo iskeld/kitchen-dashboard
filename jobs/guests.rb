@@ -18,10 +18,16 @@ guest_list = {
 SCHEDULER.every '15s' do
 	today = Date.today
 
-	list = guest_list.select{|k,v| v['date'] === today}
+	list = { ' ' => {'guests' => ['No guests today :('] } }
+
+	selected = guest_list.select{|k,v| v['date'] === today}
+
+	if !selected.empty?
+		list = selected
+	end
 
 	inviter = list.keys.sample
-	invitees =  list[inviter]['guests']
+	invitees = list[inviter]['guests']
 
 	send_event('guests', {items: invitees, moreinfo: "Invited by " + inviter })
 end
