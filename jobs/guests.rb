@@ -1,11 +1,33 @@
+require 'date'
+
 guest_list = {
-	'Michal Sliwon' => ['Tim Mast', 'Simo Saynevirta', 'Scot Burdette'], 
-	'Magdalena Gonta-Rozniata' => ['Dario Tecci'],
-	'Arkadiusz Kuczkowski' => ['Per Larsen']
+	'Michal Sliwon' => {
+		'guests' => ['Tim Mast', 'Simo Saynevirta', 'Scot Burdette'],
+		'date' => (Date.parse('2014-11-20')..Date.parse('2014-11-21'))
+	},
+	'Magdalena Gonta-Rozniata' => {
+		'guests' => ['Dario Tecci'],
+		'date' => (Date.parse('2014-11-20')..Date.parse('2014-11-21'))
+	},
+	'Arkadiusz Kuczkowski' => {
+		'guests' => ['Per Larsen'],
+		'date' => (Date.parse('2014-11-20')..Date.parse('2014-11-21'))
 	}
+}
 
 SCHEDULER.every '15s' do
-	inviter = guest_list.keys.sample
-	invitees =  guest_list[inviter]
+	today = Date.today
+
+	list = { ' ' => {'guests' => ['No guests today :('] } }
+
+	selected = guest_list.select{|k,v| v['date'] === today}
+
+	if !selected.empty?
+		list = selected
+	end
+
+	inviter = list.keys.sample
+	invitees = list[inviter]['guests']
+
 	send_event('guests', {items: invitees, moreinfo: "Invited by " + inviter })
 end
