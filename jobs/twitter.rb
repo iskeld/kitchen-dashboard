@@ -4,10 +4,10 @@ require 'twitter'
 #### Get your twitter keys & secrets:
 #### https://dev.twitter.com/docs/auth/tokens-devtwittercom
 twitter = Twitter::REST::Client.new do |config|
-  config.consumer_key = 'oaPfw1CLIxWAAOXqFf0DHD5mw'
-  config.consumer_secret = '2k1Ds81IyE46eJiNafL2Ntr7Av2YGmmkdppGyX0IfUlv6L7LoB'
-  config.access_token = '126397269-mr2pxmNW7X8Wo9j1KP7V6dsUhT1NWa8ZCeMuTsHS'
-  config.access_token_secret = '1wJEuHUOHr5vIoo7nm5s9814C0MGmD6HVaTHOvXsVp0fB'
+  config.consumer_key = ENV['TWITTER_CONSUMER_KEY']
+  config.consumer_secret = ENV['TWITTER_CONSUMER_SECRET']
+  config.access_token = ENV['TWITTER_ACCESS_SECRET'] 
+  config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN'] 
 end
 
 search_term = [URI::encode('#devLDZ'), URI::encode('#scareCrew'), URI::encode('#guildWebDev') ] 
