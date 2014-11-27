@@ -9,7 +9,8 @@ $ gem install bundler
 ```
 $ bundle
 ```
-##To run on localhost:3030
+##To run on localhost
+[localhost:3030/sampletv](http://localhost:3030/sampletv)
 ```
 $ dashing start
 ```
