@@ -1,8 +1,8 @@
 require 'dashing'
 
 configure do
-  set :auth_token, 'a453f93ba0293f1b05fa'
-
+  set :auth_token, ENV['AUTH_TOKEN']
+  set :default_dashboard, 'sampletv'
   helpers do
     def protected!
      # Put any authentication code you want in here.
