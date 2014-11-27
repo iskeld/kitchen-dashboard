@@ -1,33 +1,45 @@
 // ----------------------------------------------------------------------------
 // Sass declarations
 // ----------------------------------------------------------------------------
-$background-color:  #14cca3;
-
-$title-color:       rgba(255, 255, 255, 0.7);
-$moreinfo-color:    rgba(255, 255, 255, 0.7);
-
+$background-color:  #f2201e;
+$value-color:       #fff;
+ 
+$title-color:       rgba(255, 255, 255, 0.7);;
+$moreinfo-color:    rgba(255, 255, 255, 0.7);;
+$last-trade-color:  rgba(255, 255, 255, 0.7);;
+ 
 // ----------------------------------------------------------------------------
-// Widget-text styles
+// Widget-stock styles
 // ----------------------------------------------------------------------------
-.widget-guests {
-
+.widget-stock {
+ 
   background-color: $background-color;
-
+ 
   .title {
     color: $title-color;
   }
-
+ 
+  .value {
+    color: $value-color;
+  font-size: 60px;
+  }
+ 
+  .change-percent {
+    font-weight: 500;
+    font-size: 50px;
+    color: $value-color;
+  }
+ 
   .more-info {
     color: $moreinfo-color;
-    font-size: 24px;
   }
-
+ 
   .updated-at {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.3);
   }
-
-
-  &.large h2 {
-    font-size: 48px;
+ 
+  .last-trade-time {
+    color: $last-trade-color;
   }
+ 
 }
