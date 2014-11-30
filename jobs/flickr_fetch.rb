@@ -1,9 +1,9 @@
 require 'flickraw'
 
-FlickRaw.api_key="YOUR_API_KEY"
-FlickRaw.shared_secret="YOUR_SERCRET"
+FlickRaw.api_key = ENV['FLICKR_API_KEY']
+FlickRaw.shared_secret = ENV['FLICKR_SECRET']
 
-$flickrUsername = "username"
+$flickrUsername = ENV['FLICKR_USERNAME']
 
 # image urls to retrieve, if the image size is not available, the next one is used and so on
 # see https://www.flickr.com/services/api/misc.urls.html for details
