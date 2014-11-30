@@ -1,33 +1,41 @@
 require 'date'
 
 guest_list = {
-	'Michal Sliwon' => {
-		'guests' => ['Tim Mast', 'Simo Saynevirta', 'Scot Burdette'],
-		'date' => (Date.parse('2014-11-20')..Date.parse('2014-11-21'))
+	'Petia Harlow' => {
+		'guests' => ['Kelly Mu', 'Tayler Kim', 'Tafadzwa Shura'],
+		'date' => (Date.parse('2014-11-20')..Date.parse('2014-12-11'))
 	},
-	'Magdalena Gonta-Rozniata' => {
-		'guests' => ['Dario Tecci'],
-		'date' => (Date.parse('2014-11-20')..Date.parse('2014-11-21'))
+	'John Doe' => {
+		'guests' => ['Fergie Montana'],
+		'date' => (Date.parse('2014-11-20')..Date.parse('2014-12-11'))
 	},
-	'Arkadiusz Kuczkowski' => {
-		'guests' => ['Per Larsen'],
-		'date' => (Date.parse('2014-11-20')..Date.parse('2014-11-21'))
+	'Hunter Jo' => {
+		'guests' => ['Athaliah Ihsan'],
+		'date' => (Date.parse('2014-11-20')..Date.parse('2014-12-11'))
 	}
 }
+inviter_idx = 0
 
-SCHEDULER.every '15s' do
+SCHEDULER.every '15s', :first_in => 0 do |job|
+
 	today = Date.today
+	todays_guests = guest_list.select { |k,v| v['date'] === today }
 
-	list = { ' ' => {'guests' => ['No guests today :('] } }
+	if !todays_guests.empty?
+		guests_today = todays_guests.keys.length
+		
+		if inviter_idx >= guests_today
+			inviter_idx = 0
+		end
 
-	selected = guest_list.select{|k,v| v['date'] === today}
+		inviter = todays_guests.keys[inviter_idx]
+		invitees = todays_guests[inviter]['guests']
 
-	if !selected.empty?
-		list = selected
+		send_event('guests', { guests: invitees, moreinfo: "Invited by " + inviter })
+
+		inviter_idx += 1
+	else
+		send_event('guests', { })
 	end
 
-	inviter = list.keys.sample
-	invitees = list[inviter]['guests']
-
-	send_event('guests', {items: invitees, moreinfo: "Invited by " + inviter })
 end
