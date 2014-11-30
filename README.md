@@ -19,7 +19,7 @@ $ dashing start
 [@Heroku](http://kitchen-dashboard.herokuapp.com)
 
 ###Contributing
-Via pull request - see issues on the right.
+Via pull request - [see issues](https://github.com/senssei/kitchen-dashboard/issues).
 
 ###Resources
 [Dashing basics](http://dashing.io/)
